@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="uz-Cyrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mutarjim — таржима ва таҳрир дастури</title>
+<meta name="description" content="Mutarjim — катта матнлар ва китобларни таржима қилиш, тасҳиҳ, таҳрир, қисқартириш ва саҳифалаш учун macOS дастури.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Cpath d='M8 9.5c3-1.2 5.6-1 8 .8 2.4-1.8 5-2 8-.8v13c-3-1.2-5.6-1-8 .8-2.4-1.8-5-2-8-.8z' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M16 10.3v13' stroke='%23fff' stroke-width='1.8'/%3E%3C/svg%3E">
+<style>
+  :root { --bg:#fbfaf7; --fg:#1c1c1a; --muted:#66645e; --accent:#0f766e; --card:#fff; --line:#e4e1d8; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141413; --fg:#ecebe6; --muted:#a3a198; --accent:#34b8a8; --card:#1d1d1b; --line:#33322e; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 20px 64px; }
+  h1 { font-size: 2.2rem; margin: 0 0 6px; }
+  .lead { color: var(--muted); font-size: 1.1rem; margin: 0 0 28px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin: 14px 0; }
+  .card h2 { font-size: 1.1rem; margin: 0 0 8px; color: var(--accent); }
+  ul { margin: 6px 0 0; padding-left: 1.2em; }
+  li { margin: 4px 0; }
+  .ver { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 32px; color: var(--muted); font-size: .9rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Mutarjim</h1>
+  <p class="lead">Катта матнлар ва китобларни сунъий интеллект ёрдамида таржима қилиш ва тайёрлаш учун macOS дастури.</p>
+
+  <div class="card">
+    <h2>Нималарга ярайди</h2>
+    <ul>
+      <li>Таржима — матн ва Word файллари, бир нечта файл бирданига</li>
+      <li>Тасҳиҳ, таҳрир, қисқартириш</li>
+      <li>Викторина ва шарҳ тузиш</li>
+      <li>PDF дан матн олиш (скан ҳам — OCR)</li>
+      <li>Китоб саҳифалаш: тайёр HTML, PDF ва Word</li>
+      <li>«Занжир»: аниқлаш → таҳрир → таржима → саҳифалаш кетма-кет ўзи бажарилади</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Охирги версия</h2>
+    <p class="ver" id="ver">Юкланмоқда…</p>
+  </div>
+
+  <footer>© Mutarjim · <a href="https://abdulloh.org">abdulloh.org</a></footer>
+</main>
+<script>
+  fetch('latest.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) {
+    document.getElementById('ver').textContent = 'Версия ' + (j.tag_name || '—') + (j.date ? ' · ' + j.date : '');
+  }).catch(function () { document.getElementById('ver').textContent = '—'; });
+</script>
+</body>
+</html>
